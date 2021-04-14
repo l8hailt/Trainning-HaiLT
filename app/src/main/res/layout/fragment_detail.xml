@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="This is title" />
+
+    <TextView
+        android:id="@+id/tv_overview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="This is overview" />
+
+    <TextView
+        android:id="@+id/tv_vote_average"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:text="This is vote average" />
+
+    <TextView
+        android:id="@+id/tv_vote_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="This is vote count" />
+
+</LinearLayout>

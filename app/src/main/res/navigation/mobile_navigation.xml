@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_up_coming">
+
+    <fragment
+        android:id="@+id/navigation_up_coming"
+        android:name="vn.hailt.moviedemo.ui.upcoming.UpcomingFragment"
+        android:label="@string/title_upcoming"
+        tools:layout="@layout/fragment_upcoming">
+        <action
+            android:id="@+id/action_navigation_up_coming_to_navigation_detail"
+            app:destination="@id/navigation_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_top_rated"
+        android:name="vn.hailt.moviedemo.ui.toprated.TopRatedFragment"
+        android:label="@string/title_top_rated"
+        tools:layout="@layout/fragment_top_rated" />
+
+    <fragment
+        android:id="@+id/navigation_popular"
+        android:name="vn.hailt.moviedemo.ui.popular.PopularFragment"
+        android:label="@string/title_popular"
+        tools:layout="@layout/fragment_popular" />
+
+    <fragment
+        android:id="@+id/navigation_now_playing"
+        android:name="vn.hailt.moviedemo.ui.nowplaying.NowPlayingFragment"
+        android:label="@string/title_now_playing"
+        tools:layout="@layout/fragment_now_playing" />
+
+    <fragment
+        android:id="@+id/navigation_detail"
+        android:name="vn.hailt.moviedemo.ui.detail.DetailFragment"
+        android:label="@string/title_now_detail"
+        tools:layout="@layout/fragment_detail" />
+</navigation>
