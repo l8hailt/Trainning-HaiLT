@@ -12,18 +12,18 @@ import vn.hailt.moviedemo.R
 
 class PopularFragment : Fragment() {
 
-    private lateinit var polularViewModel: PolularViewModel
+    private lateinit var popularViewModel: PopularViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        polularViewModel =
-            ViewModelProvider(this).get(PolularViewModel::class.java)
+        popularViewModel =
+            ViewModelProvider(this).get(PopularViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_popular, container, false)
         val textView: TextView = root.findViewById(R.id.text_notifications)
-        polularViewModel.text.observe(viewLifecycleOwner, Observer {
+        popularViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

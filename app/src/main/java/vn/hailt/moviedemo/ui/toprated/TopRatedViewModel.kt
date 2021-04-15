@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class TopRatedViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is top rated Fragment"
     }
     val text: LiveData<String> = _text
 }
