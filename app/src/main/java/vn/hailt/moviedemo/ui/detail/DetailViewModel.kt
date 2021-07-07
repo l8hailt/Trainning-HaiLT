@@ -16,4 +16,13 @@ class DetailViewModel : ViewModel() {
                 e.printStackTrace()
             }
         }
+
+    fun getMovieVideos(movieId: String) = liveData(Dispatchers.IO) {
+        try {
+            emit(ApiBuilder.getInstance().getMovieVideos(movieId, MainActivity.API_KEY))
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

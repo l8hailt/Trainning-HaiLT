@@ -1,6 +1,8 @@
 package vn.hailt.moviedemo.ui.detail
 
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -40,13 +42,17 @@ class DetailFragment : Fragment() {
                     it?.apply {
                         Log.e("TAG", "onCreateView: $it")
                         Glide.with(this@DetailFragment)
-                            .load("https://api.themoviedb.org/3/$backdropPath")
+                            .load("https://image.tmdb.org/t/p/original$backdropPath")
                             .into(imgBackdrop)
                         tvTitle.text = title
                         tvOverview.text = overview
                         tvVoteAverage.text = voteAverage.toString()
                         tvVoteCount.text = voteCount.toString()
                     }
+                })
+
+                detailViewModel.getMovieVideos(movieId).observe(viewLifecycleOwner, Observer {
+                    Log.e("TAG", "onCreateView: $it")
                 })
             }
         }
