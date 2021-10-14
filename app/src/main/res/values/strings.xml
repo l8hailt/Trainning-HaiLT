@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieDemo</string>
+    <string name="app_name">HaiLT TC04333</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_upcoming">Upcoming</string>
     <string name="title_top_rated">Top rated</string>

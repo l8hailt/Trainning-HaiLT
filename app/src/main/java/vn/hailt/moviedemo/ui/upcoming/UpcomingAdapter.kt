@@ -3,9 +3,12 @@ package vn.hailt.moviedemo.ui.upcoming
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import vn.hailt.moviedemo.R
+import vn.hailt.moviedemo.databinding.ItemMovieBinding
 import vn.hailt.moviedemo.model.MovieUpcoming
 
 class UpcomingAdapter(
@@ -15,8 +18,10 @@ class UpcomingAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpcomingHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
-        return UpcomingHolder(v)
+        val inflater = LayoutInflater.from(parent.context)
+        val binding =
+            DataBindingUtil.inflate<ItemMovieBinding>(inflater, R.layout.item_movie, parent, false)
+        return UpcomingHolder(binding)
     }
 
     override fun getItemCount() = movies.size
@@ -25,18 +30,15 @@ class UpcomingAdapter(
         holder.bind(movies[position])
     }
 
-    inner class UpcomingHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        private val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
-        private val tvOverview: TextView = itemView.findViewById(R.id.tv_overview)
+    inner class UpcomingHolder(
+        private val binding: ItemMovieBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: MovieUpcoming) {
-            tvTitle.text = movie.title
-            tvOverview.text = movie.overview
-
-            itemView.setOnClickListener {
+            binding.root.setOnClickListener {
                 listener.invoke(movie.id)
             }
+            binding.movie = movie
         }
     }
 

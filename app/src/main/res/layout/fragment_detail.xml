@@ -1,42 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/img_backdrop"
+    <data>
+
+        <variable
+            name="detail"
+            type="vn.hailt.moviedemo.model.MovieDetail" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:src="@mipmap/ic_launcher" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:paddingHorizontal="8dp">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:text="This is title" />
+        <ImageView
+            android:id="@+id/img_poster"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
+            android:poster="@{detail.posterPath}"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="9:16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_overview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="This is overview" />
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{detail.title}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_poster"
+            app:layout_constraintTop_toTopOf="@+id/img_poster"
+            tools:text="This is title" />
 
-    <TextView
-        android:id="@+id/tv_vote_average"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:text="This is vote average" />
+        <TextView
+            android:id="@+id/tv_duration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{`Duration: ` + detail.runtime + `m`}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="This is duration" />
 
-    <TextView
-        android:id="@+id/tv_vote_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="This is vote count" />
+        <TextView
+            android:id="@+id/tv_overview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{`Overview:\n` + detail.overview}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_duration"
+            app:layout_constraintTop_toBottomOf="@+id/tv_duration"
+            tools:text="This is overview" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tv_vote_average"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{`Vote average: ` + detail.voteAverage}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_overview"
+            app:layout_constraintTop_toBottomOf="@+id/tv_overview"
+            tools:text="This is vote average" />
+
+        <TextView
+            android:id="@+id/tv_vote_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{`Vote count: ` + detail.voteCount}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_vote_average"
+            app:layout_constraintTop_toBottomOf="@+id/tv_vote_average"
+            tools:text="This is vote count" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
