@@ -23,13 +23,13 @@ class BridgeActivity : AppCompatActivity() {
         }
 
         binding.btn2.setOnClickListener {
-            Intent(this@BridgeActivity, MainActivity::class.java).also {
+            Intent(this@BridgeActivity, StopWatchActivity::class.java).also {
                 startActivity(it)
             }
         }
 
         binding.btn3.setOnClickListener {
-            Intent(this@BridgeActivity, MainActivity::class.java).also {
+            Intent(this@BridgeActivity, DownloadActivity::class.java).also {
                 startActivity(it)
             }
         }
