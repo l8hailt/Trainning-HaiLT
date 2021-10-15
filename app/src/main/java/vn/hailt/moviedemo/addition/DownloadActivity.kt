@@ -34,7 +34,7 @@ class DownloadActivity : AppCompatActivity() {
 
         binding.btnDownload.setOnClickListener {
             isDownloading.set(true)
-            downloadFile()
+            downloadFile(binding.edtUrl.text.toString().trim())
         }
 
         progressReceiver = object : BroadcastReceiver() {
@@ -62,7 +62,7 @@ class DownloadActivity : AppCompatActivity() {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(progressReceiver)
     }
 
-    private fun downloadFile() {
+    private fun downloadFile(inputUrl: String) {
         var url: URL? = null
         var file = ""
         try {
@@ -71,8 +71,9 @@ class DownloadActivity : AppCompatActivity() {
             //for a bigger file: http://www.nasa.gov/images/content/206402main_jsc2007e113280_hires.jpg
             //for reason I don't understand, I can't download it from nasa on the phone... weird...
             // url = new URL("http://www.nasa.gov/images/content/206402main_jsc2007e113280_hires.jpg");
-            url =
-                URL("http://www.cs.uwyo.edu/~seker/courses/4730/example/206402main_jsc2007e113280_hires.jpg")
+//            url =
+//                URL("http://www.cs.uwyo.edu/~seker/courses/4730/example/206402main_jsc2007e113280_hires.jpg")
+            url = URL(inputUrl)
 
             file = URLUtil.guessFileName(url.file, null, null)
         } catch (e: MalformedURLException) {
