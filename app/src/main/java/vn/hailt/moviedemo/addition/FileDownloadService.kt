@@ -52,16 +52,16 @@ class FileDownloadService : IntentService("FileDownLoad") {
         }
 
         try {
-//            val notificationBuilder =
-//                NotificationCompat.Builder(applicationContext, NOTIFICATION_CHANNEL)
-//                    .setSmallIcon(R.mipmap.ic_launcher)
-//                    .setWhen(System.currentTimeMillis())
-//                    .setContentTitle("File Download")
-//                    .setContentText("Downloading")
-//                    .setProgress(100, 0, true)
-//                    .setAutoCancel(false)
-//
-//            startForeground(NOTIFICATION_ID_FOREGROUND, notificationBuilder.build())
+            val notificationBuilder =
+                NotificationCompat.Builder(applicationContext, NOTIFICATION_CHANNEL)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setWhen(System.currentTimeMillis())
+                    .setContentTitle("File Download")
+                    .setContentText("Downloading")
+                    .setProgress(100, 0, true)
+                    .setAutoCancel(false)
+
+            startForeground(NOTIFICATION_ID_FOREGROUND, notificationBuilder.build())
 
             val urlConnection = url!!.openConnection() as HttpURLConnection
 
@@ -99,13 +99,13 @@ class FileDownloadService : IntentService("FileDownLoad") {
                 fos.close()
             }
 
-//            if (uri == null) {
-//                val values = ContentValues()
-//                values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis())
-//                values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
-//                values.put(MediaStore.MediaColumns.DATA, file.toString())
-//                contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
-//            }
+            if (uri == null) {
+                val values = ContentValues()
+                values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis())
+                values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+                values.put(MediaStore.MediaColumns.DATA, file.toString())
+                contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+            }
 
             showNotification(0, "Download finished", file)
 
